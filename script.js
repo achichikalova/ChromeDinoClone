@@ -3,6 +3,23 @@ const WORLD_HEIGHT = 30;
 
 const worldElement = document.querySelector('[data-world]');
 
+// Update Loop for smooth moving of the elements on the screen
+const update = (time) => {
+  let lastTime;
+
+  if (lastTime == null) {
+    lastTime = time;
+    window.requestAnimationFrame(update);
+    return;
+  }
+  const delta = time - lastTime;
+  lastTime = time;
+  window.requestAnimationFrame(update);
+
+}
+window.requestAnimationFrame(update);
+
+// World Scaling
 const setWorldScale = () => {
   let worldScale;
 
