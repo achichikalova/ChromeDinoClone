@@ -36,7 +36,7 @@ body {
 }
 
 .ground {
-  --lest: 0;
+  --left: 0;
   position: absolute;
   width: 300%;
   bottom: 0;
