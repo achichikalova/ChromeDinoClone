@@ -1,5 +1,6 @@
 // imports:
 import { setupGround, updateGround } from './ground.js'
+import { setupDino, updateDino } from './dino.js'
 
 const WORLD_WIDTH = 100;
 const WORLD_HEIGHT = 30;
@@ -37,6 +38,7 @@ const update = (time) => {
   
   // Ground moving functions
   updateGround(delta, speedScale);
+  updateDino(delta, speedScale);
   updateSpeedScale(delta);
   updateScore(delta);
   
@@ -51,6 +53,7 @@ const handleStart = () => {
   score = 0;
   // Setup ground
   setupGround();
+  setupDino();
   startScreenElement.classList.add('hide');
   window.requestAnimationFrame(update);
 } 
