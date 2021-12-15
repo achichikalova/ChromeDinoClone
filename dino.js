@@ -12,6 +12,11 @@ let dinoFrame;
 let currentFrameTime;
 let yVelocity;
 
+// Get dino size function
+export const getDinoRects = () => {
+  return dinoElement.getBoundingClientRect();
+}
+
 // Run Dino function
 const handleRun = (delta, speedScale) => {
   if (isJumping) {
@@ -40,6 +45,11 @@ const handleJump = (delta) => {
   }
 
   yVelocity -= GRAVITY * delta;
+}
+
+// Lose Dino function
+export const setDinoLose = () => {
+  dinoElement.src = 'images/dino-lose.png';
 }
 
 // Handle user press jump function

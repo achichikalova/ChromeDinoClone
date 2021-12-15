@@ -8,6 +8,13 @@ const worldElement = document.querySelector('[data-world]');
 
 let nextCactusTime;
 
+// Get cactus size function
+export const getCactusRects = () => {
+  return [...document.querySelectorAll('[data-cactus]')].map(cactus => {
+    return cactus.getBoundingClientRect();
+  })
+}
+
 // Create cactus function
 const createCactus = () => {
   const cactus = document.createElement('img');
