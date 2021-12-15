@@ -3,12 +3,27 @@ import { setupGround, updateGround } from './ground.js'
 
 const WORLD_WIDTH = 100;
 const WORLD_HEIGHT = 30;
+const SPEED_SCALE_INCREASE = .00001;
 
 const worldElement = document.querySelector('[data-world]');
+const scoreElement = document.querySelector('[data-score]');
+const startScreenElement = document.querySelector('[data-start-screen]');
 
 // Update Loop for smooth moving of the elements on the screen
 let lastTime;
 let speedScale;
+let score;
+
+// Function to update speed scale
+const updateSpeedScale = (delta) => {
+  speedScale += delta * SPEED_SCALE_INCREASE;
+}
+
+// Function to update score
+const updateScore = (delta) => {
+  score += delta * 0.01;
+  scoreElement.textContent = Math.floor(score);
+}
 
 const update = (time) => {
   
@@ -20,8 +35,10 @@ const update = (time) => {
   
   const delta = time - lastTime;
   
-  // Ground moving function
+  // Ground moving functions
   updateGround(delta, speedScale);
+  updateSpeedScale(delta);
+  updateScore(delta);
   
   lastTime = time;
   window.requestAnimationFrame(update);
@@ -31,8 +48,10 @@ const update = (time) => {
 const handleStart = () => {
   lastTime = null;
   speedScale = 1;
+  score = 0;
   // Setup ground
   setupGround();
+  startScreenElement.classList.add('hide');
   window.requestAnimationFrame(update);
 } 
 
