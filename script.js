@@ -1,6 +1,7 @@
 // imports:
-import { setupGround, updateGround } from './ground.js'
-import { setupDino, updateDino } from './dino.js'
+import { setupGround, updateGround } from './ground.js';
+import { setupDino, updateDino } from './dino.js';
+import { setupCactus, updateCactus } from './cactus.js';
 
 const WORLD_WIDTH = 100;
 const WORLD_HEIGHT = 30;
@@ -39,6 +40,7 @@ const update = (time) => {
   // Ground moving functions
   updateGround(delta, speedScale);
   updateDino(delta, speedScale);
+  updateCactus(delta, speedScale);
   updateSpeedScale(delta);
   updateScore(delta);
   
@@ -54,6 +56,7 @@ const handleStart = () => {
   // Setup ground
   setupGround();
   setupDino();
+  setupCactus();
   startScreenElement.classList.add('hide');
   window.requestAnimationFrame(update);
 } 
